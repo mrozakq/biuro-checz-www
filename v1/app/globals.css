@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-red: #CC0000;
+  --brand-black: #1a1a1a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-brand-black font-sans antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif tracking-tight;
+}
+
+.container-wide {
+  @apply max-w-6xl mx-auto px-6;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center bg-brand-red hover:bg-brand-red-dark text-white font-medium px-6 py-3 transition-colors duration-200 tracking-wide;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center border border-white/30 hover:border-white text-white font-medium px-6 py-3 transition-colors;
+}
+
+.section {
+  @apply py-16 md:py-24;
+}
+
+.divider-red {
+  @apply inline-block w-12 h-[2px] bg-brand-red;
+}
