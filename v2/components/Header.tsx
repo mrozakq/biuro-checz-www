@@ -40,7 +40,7 @@ export default function Header() {
       <div className="border-b-2 border-rule bg-paper">
         <div className="wrap flex items-stretch justify-between gap-4">
           <Link href="/" className="flex shrink-0 items-center py-2.5" onClick={() => setOpen(false)}>
-            <Image src={logo} alt="Biuro Checz’, od 1991" className="h-[64px] w-auto md:h-[80px]" priority />
+            <Image src={logo} alt="Biuro Checz’, od 1991" className="h-[76px] w-auto md:h-[100px]" priority />
           </Link>
 
           <nav className="hidden items-stretch lg:flex" aria-label="Menu główne">

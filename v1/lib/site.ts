@@ -33,8 +33,12 @@ export const EMAILS = [
   { label: 'Sprawy techniczne', email: 'techniczny@biurochecz.pl' },
 ]
 
-export const MAP_EMBED =
-  'https://maps.google.com/maps?q=Jana%20III%20Sobieskiego%20223%2F4%2C%2084-200%20Wejherowo&t=m&z=16&output=embed&iwloc=near'
+// Wizytówka Google: Checz Biuro usług turystycznych i administracji nieruchomościami
+// (link od klienta: https://share.google/hveGm7kXlTZ3L2Kys)
+export const MAP_PLACE_NAME = 'Checz Biuro usług turystycznych i administracji nieruchomościami'
+export const MAP_PLACE_ID = 'ChIJsWTiRiy6_UYRNt0WpsPl30k'
 
-export const MAP_ROUTE =
-  'https://www.google.com/maps/dir/?api=1&destination=Jana+III+Sobieskiego+223%2F4%2C+84-200+Wejherowo'
+export const MAP_EMBED =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1200!2d18.2366344!3d54.602356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fdba2c46e264b1%3A0x49dfe5c3a616dd36!2sChecz%20Biuro%20us%C5%82ug%20turystycznych%20i%20administracji%20nieruchomo%C5%9Bciami!5e0!3m2!1spl!2spl!4v1763290000000!5m2!1spl!2spl'
+
+export const MAP_ROUTE = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(MAP_PLACE_NAME)}&destination_place_id=${MAP_PLACE_ID}`

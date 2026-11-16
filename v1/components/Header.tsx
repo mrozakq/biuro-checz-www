@@ -45,7 +45,7 @@ export default function Header() {
       <div className="border-b border-line">
         <div className="wrap flex items-center justify-between gap-4 py-4">
           <Link href="/" className="flex shrink-0 items-center gap-4" onClick={() => setOpen(false)}>
-            <Image src={logo} alt="Biuro Checz’, od 1991" className="h-[64px] w-auto md:h-[80px]" priority />
+            <Image src={logo} alt="Biuro Checz’, od 1991" className="h-[76px] w-auto md:h-[100px]" priority />
             <span className="hidden border-l border-line pl-4 text-[14px] leading-snug text-muted xl:block">
               Zarządzanie i administrowanie
               <br />

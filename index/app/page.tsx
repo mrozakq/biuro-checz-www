@@ -30,7 +30,7 @@ export default function IndexPage() {
     <div className="flex min-h-screen flex-col">
       <header className="border-b border-line bg-white">
         <div className="mx-auto flex max-w-5xl items-center gap-4 px-6 py-5">
-          <Image src="/checz-logo.png" alt="Biuro Checz’" width={386} height={360} className="h-[64px] w-auto" />
+          <Image src="/checz-logo.png" alt="Biuro Checz’" width={386} height={360} className="h-[80px] w-auto" />
           <div className="border-l border-line pl-4 text-sm leading-tight">
             <div className="font-semibold">Nowa strona internetowa</div>
             <div className="text-muted">propozycje do wyboru</div>
