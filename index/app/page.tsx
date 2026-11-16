@@ -93,8 +93,14 @@ export default function IndexPage() {
       </main>
 
       <footer className="border-t border-line bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-5 text-xs text-muted">
-          Materiał roboczy do wyboru wariantu, strona nie jest indeksowana w wyszukiwarkach.
+        <div className="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-5 text-xs text-muted sm:flex-row sm:justify-between">
+          <span>Materiał roboczy do wyboru wariantu, strona nie jest indeksowana w wyszukiwarkach.</span>
+          <span>
+            Realizacja i nadzór nad projektem:{' '}
+            <a href="https://emteq.pl" target="_blank" rel="noopener" className="font-semibold text-ink hover:text-[#CC0000]">
+              emTeq
+            </a>
+          </span>
         </div>
       </footer>
     </div>

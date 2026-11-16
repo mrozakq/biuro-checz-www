@@ -63,7 +63,15 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/15">
-        <div className="wrap py-5 text-[13px] text-white/50">© {new Date().getFullYear()} Biuro Checz’, Wejherowo</div>
+        <div className="wrap flex flex-col gap-2 py-5 text-[13px] text-white/50 sm:flex-row sm:justify-between">
+          <span>© {new Date().getFullYear()} Biuro Checz’, Wejherowo</span>
+          <span>
+            Realizacja i nadzór nad stroną:{' '}
+            <a href="https://emteq.pl" target="_blank" rel="noopener" className="font-semibold text-white/80 hover:text-white hover:underline">
+              emTeq
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   )
