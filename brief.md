@@ -144,3 +144,21 @@ Meta description: Biuro Checz' — profesjonalne zarządzanie nieruchomościami 
 
 Język: polski
 
+
+
+\## Rewizja 2 (16.11.2026), nadpisuje powyższe tam, gdzie się różni
+
+Warianty: 2 (v1 klasyczny, v2 wyrazisty), poprzednie usunięte.
+
+Podstrony: Strona główna, Oferta, Utrzymanie czystości (adres jak na starej stronie), Kontakt.
+
+Usunąć: opinie, porady, podstronę „O nas”, newsletter, pomoc techniczną / pogotowie 24h.
+
+Dodać: mapkę, formularz wysyłający na biuro@biurochecz.pl, wyróżniony link do tomojdom.pl w menu, przypinkę z FB i Instagramem.
+
+Treści: można czerpać ze starej strony biurochecz.pl. Adresy działów: naliczenia@, rozliczenia@, techniczny@biurochecz.pl.
+
+Styl: strona nie może wyglądać na zrobioną przez AI.
+
+Profile: https://www.facebook.com/profile.php?id=100080105594508, https://www.instagram.com/biurochecz/
+

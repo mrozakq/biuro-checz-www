@@ -1,42 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
-  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  @apply bg-white text-brand-ink font-sans antialiased;
+  @apply bg-paper text-ink font-sans antialiased;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
-.container-wide {
-  @apply max-w-7xl mx-auto px-6;
+::selection {
+  background: #cc0000;
+  color: #fff;
 }
 
-.btn-primary {
-  @apply inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-red-700 text-white font-semibold rounded-full px-7 py-3.5 transition-all shadow-soft hover:translate-y-[-1px];
+:focus-visible {
+  outline: 2px solid #cc0000;
+  outline-offset: 2px;
 }
 
-.btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 bg-white hover:bg-brand-bg text-brand-ink font-semibold rounded-full px-7 py-3.5 border border-brand-line transition-all;
-}
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-wrap px-5 md:px-8;
+  }
 
-.eyebrow {
-  @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-red;
-}
+  /* Wąski krój nagłówków: oś szerokości fontu Archivo */
+  .cond {
+    font-variation-settings: 'wdth' 70;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 0.98;
+  }
 
-.eyebrow::before {
-  content: '';
-  @apply inline-block w-6 h-[2px] bg-brand-red;
-}
+  .cond-mid {
+    font-variation-settings: 'wdth' 82;
+    font-weight: 700;
+    line-height: 1.1;
+  }
 
-.card {
-  @apply bg-white rounded-2xl border border-brand-line shadow-card p-7 hover:shadow-soft hover:border-brand-red/30 transition-all;
-}
+  .btn {
+    @apply inline-flex items-center gap-2 bg-ink px-6 py-3.5 text-[16px] font-semibold text-white transition-colors hover:bg-red;
+  }
 
-.section {
-  @apply py-20 md:py-28;
+  .btn-red {
+    @apply inline-flex items-center gap-2 bg-red px-6 py-3.5 text-[16px] font-semibold text-white transition-colors hover:bg-ink;
+  }
+
+  .btn-light {
+    @apply inline-flex items-center gap-2 bg-white px-6 py-3.5 text-[16px] font-semibold text-ink transition-colors hover:bg-ink hover:text-white;
+  }
+
+  .link {
+    @apply underline decoration-red decoration-2 underline-offset-4 transition-colors hover:text-red;
+  }
+
+  .tag {
+    @apply text-[13px] font-semibold uppercase tracking-[0.12em];
+  }
+
+  .square-list li {
+    @apply relative pl-6;
+  }
+
+  .square-list li::before {
+    content: '';
+    @apply absolute left-0 top-[0.62em] h-2 w-2 bg-red;
+  }
 }

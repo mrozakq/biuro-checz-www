@@ -1,87 +1,103 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Icon from '@/components/Icon'
+import PageHead from '@/components/PageHead'
+import { ExternalIcon } from '@/components/icons'
+import { AUDIT, GROUPS, SERVICES, TOMOJDOM_TEXT } from '@/lib/content'
+import { SITE } from '@/lib/site'
+import { t } from '@/lib/typo'
 
 export const metadata: Metadata = {
-  title: 'Oferta — Zarządzanie Nieruchomościami | Biuro Checz\'',
+  title: 'Oferta: zarządzanie i administrowanie nieruchomościami',
   description:
-    'Pełna oferta Biuro Checz\': obsługa wspólnot, deweloperów, właścicieli prywatnych, sprawy techniczne, Strefa Mieszkańca, pogotowie 24/7.',
+    'Administracja, księgowość, obsługa techniczna i prawna wspólnot mieszkaniowych w Wejherowie. Audyt kosztów, windykacja, utrzymanie czystości, strefa mieszkańca.',
 }
-
-const offers = [
-  { i: 'building', t: 'Kompleksowa obsługa wspólnot mieszkaniowych', d: 'Pełna administracja i księgowość wspólnoty: prowadzenie zebrań, uchwały, sprawozdania finansowe, korespondencja z urzędami i kontrahentami.' },
-  { i: 'layers', t: 'Zarządzanie nieruchomościami deweloperów i osiedli', d: 'Obsługa nowych inwestycji — od odbioru technicznego, przez okres rękojmi, po pełne zarządzanie bieżące.' },
-  { i: 'user', t: 'Obsługa właścicieli prywatnych i firm', d: 'Zarządzanie pojedynczymi lokalami, kamienicami i nieruchomościami komercyjnymi. Najem, rozliczenia, formalności.' },
-  { i: 'tool', t: 'Sprawy techniczno-organizacyjne', d: 'Przeglądy okresowe, koordynacja remontów i napraw, nadzór nad pracami serwisowymi.' },
-  { i: 'ledger', t: 'Ewidencja kosztów i opłat właścicieli', d: 'Prowadzenie indywidualnych kont, naliczenia, rozliczenia mediów, monitoring zaległości.' },
-  { i: 'monitor', t: 'Internetowa Strefa Mieszkańca', d: 'Dostęp online do salda, uchwał, opłat i dokumentów — 24 godziny na dobę.' },
-  { i: 'alert', t: 'Pogotowie lokatorskie 24/7', d: 'Obsługa awarii przez całą dobę. Reakcja techniczna w nagłych sytuacjach.' },
-]
 
 export default function Oferta() {
   return (
     <>
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-red-tint via-white to-white" />
-        <div className="container-wide py-20 md:py-28 max-w-5xl">
-          <span className="eyebrow mb-5">Oferta</span>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-            Pełen zakres obsługi <span className="text-brand-red">Twojej nieruchomości</span>
-          </h1>
-          <p className="mt-6 text-xl text-brand-slate max-w-3xl leading-relaxed">
-            Od administracji i księgowości po pogotowie techniczne — wszystko, czego potrzebuje
-            Twoja wspólnota, osiedle czy lokal.
-          </p>
-        </div>
+      <PageHead
+        title="Oferta"
+        lead="Zakres współpracy dobieramy do potrzeb konkretnej nieruchomości. Poniżej opisujemy, czym zajmujemy się najczęściej."
+      />
+
+      <section className="wrap py-10">
+        <p className="tag mb-4 text-muted">Obsługujemy</p>
+        <ul className="square-list flex flex-wrap gap-x-10 gap-y-2">
+          {GROUPS.map((g) => (
+            <li key={g.title} className="cond-mid text-[20px] uppercase">
+              {g.title}
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section className="section">
-        <div className="container-wide">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {offers.map((o, idx) => (
-              <article key={o.t} className="card relative overflow-hidden">
-                <div className="absolute -top-3 -right-3 text-7xl font-extrabold text-brand-red/8 select-none">
-                  {String(idx + 1).padStart(2, '0')}
-                </div>
-                <div className="w-12 h-12 rounded-xl bg-brand-red-soft text-brand-red grid place-items-center mb-5">
-                  <Icon name={o.i as 'building'} className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 relative">{o.t}</h3>
-                <p className="text-brand-slate leading-relaxed">{o.d}</p>
-              </article>
-            ))}
+      <div className="wrap pb-8">
+        {SERVICES.map((s) => (
+          <section
+            key={s.id}
+            id={s.id}
+            className="grid scroll-mt-6 gap-5 border-t-2 border-rule py-10 md:grid-cols-12 md:gap-10 md:py-12"
+          >
+            <h2 className="cond text-[34px] uppercase md:col-span-4 md:text-[42px]">{s.title}</h2>
+            <div className="md:col-span-8">
+              <p className="text-[19px] leading-relaxed">{t(s.text)}</p>
+              {s.items.length > 0 && (
+                <ul className="square-list mt-5 grid gap-2 text-muted sm:grid-cols-2 sm:gap-x-10">
+                  {s.items.map((i) => (
+                    <li key={i}>{t(i)}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </section>
+        ))}
 
-            <article className="rounded-2xl p-7 bg-brand-ink text-white relative overflow-hidden flex flex-col justify-between min-h-[260px]">
-              <div className="absolute -bottom-16 -right-16 w-60 h-60 bg-brand-red/40 rounded-full blur-3xl" />
-              <div className="relative">
-                <h3 className="text-2xl font-bold mb-3">Twoja nieruchomość?</h3>
-                <p className="text-white/75 leading-relaxed mb-6">
-                  Przygotujemy indywidualną wycenę dopasowaną do specyfiki Twojej wspólnoty, osiedla lub lokalu.
-                </p>
-              </div>
-              <Link href="/kontakt/" className="btn-primary self-start relative">
-                Zapytaj o ofertę <Icon name="arrow" className="w-4 h-4" />
-              </Link>
-            </article>
-          </div>
-        </div>
-      </section>
+        <section id="audyt" className="grid scroll-mt-6 gap-5 border-t-2 border-rule py-10 md:grid-cols-12 md:gap-10 md:py-12">
+          <h2 className="cond text-[34px] uppercase text-red md:col-span-4 md:text-[42px]">Audyt kosztów</h2>
+          <p className="text-[21px] leading-relaxed md:col-span-8">{t(AUDIT)}</p>
+        </section>
 
-      <section className="section bg-brand-bg">
-        <div className="container-wide max-w-4xl text-center">
-          <span className="eyebrow mb-4 inline-flex">Indywidualna wycena</span>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">
-            Każda nieruchomość jest inna
-          </h2>
-          <p className="text-brand-slate text-lg leading-relaxed mb-9 max-w-2xl mx-auto">
-            Skontaktuj się — przygotujemy ofertę dopasowaną do Twoich potrzeb i zakresu obsługi.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/kontakt/" className="btn-primary">
-              Zapytaj o ofertę <Icon name="arrow" className="w-4 h-4" />
+        <section id="czystosc" className="grid scroll-mt-6 gap-5 border-t-2 border-rule py-10 md:grid-cols-12 md:gap-10 md:py-12">
+          <h2 className="cond text-[34px] uppercase md:col-span-4 md:text-[42px]">Utrzymanie czystości</h2>
+          <div className="md:col-span-8">
+            <p className="text-[19px] leading-relaxed">
+              {t(
+                'Organizujemy regularne sprzątanie klatek schodowych, wejść, piwnic i pomieszczeń technicznych w budynkach mieszkalnych.',
+              )}
+            </p>
+            <Link href="/utrzymanie-czystosci/" className="link mt-4 inline-block font-semibold">
+              Zakres sprzątania
             </Link>
-            <a href="tel:+48733398887" className="btn-secondary">
-              <Icon name="phone" className="w-4 h-4" /> +48 733 398 887
+          </div>
+        </section>
+
+        <section id="tomojdom" className="grid scroll-mt-6 gap-5 border-t-2 border-rule py-10 md:grid-cols-12 md:gap-10 md:py-12">
+          <h2 className="cond text-[34px] uppercase md:col-span-4 md:text-[42px]">Strefa mieszkańca</h2>
+          <div className="md:col-span-8">
+            <p className="text-[19px] leading-relaxed">{t(TOMOJDOM_TEXT)}</p>
+            <a href={SITE.tomojdom} target="_blank" rel="noopener" className="btn mt-6">
+              Przejdź do tomojdom.pl <ExternalIcon />
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <section className="bg-red text-white">
+        <div className="wrap grid items-center gap-8 py-14 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <h2 className="cond text-[40px] uppercase md:text-[52px]">Wycena dla Państwa nieruchomości</h2>
+            <p className="mt-4 max-w-2xl text-[18px] leading-relaxed text-white/90">
+              {t(
+                'Prosimy o kilka słów o budynku: adres, liczba lokali, czego ma dotyczyć obsługa. Oddzwonimy, żeby omówić szczegóły.',
+              )}
+            </p>
+          </div>
+          <div className="md:col-span-4 md:text-right">
+            <Link href="/kontakt/" className="btn-light">
+              Zapytaj o ofertę
+            </Link>
+            <a href={SITE.phoneHref} className="cond mt-4 block text-[36px] hover:underline">
+              {SITE.phoneDisplay}
             </a>
           </div>
         </div>

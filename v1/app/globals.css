@@ -1,42 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --brand-red: #CC0000;
-  --brand-black: #1a1a1a;
-}
-
 html {
-  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  @apply bg-white text-brand-black font-sans antialiased;
+  @apply bg-white text-ink font-sans antialiased;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
-h1, h2, h3, h4 {
-  @apply font-serif tracking-tight;
+h1,
+h2,
+h3 {
+  @apply font-serif text-ink;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
 }
 
-.container-wide {
-  @apply max-w-6xl mx-auto px-6;
+::selection {
+  background: #cc0000;
+  color: #fff;
 }
 
-.btn-primary {
-  @apply inline-flex items-center justify-center bg-brand-red hover:bg-brand-red-dark text-white font-medium px-6 py-3 transition-colors duration-200 tracking-wide;
+:focus-visible {
+  outline: 2px solid #cc0000;
+  outline-offset: 2px;
 }
 
-.btn-ghost {
-  @apply inline-flex items-center justify-center border border-white/30 hover:border-white text-white font-medium px-6 py-3 transition-colors;
-}
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-wrap px-5 md:px-8;
+  }
 
-.section {
-  @apply py-16 md:py-24;
-}
+  .btn {
+    @apply inline-flex items-center gap-2 bg-red px-5 py-3 font-semibold text-white transition-colors hover:bg-red-dark;
+    border-radius: 2px;
+  }
 
-.divider-red {
-  @apply inline-block w-12 h-[2px] bg-brand-red;
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-ink px-5 py-3 font-semibold text-ink transition-colors hover:bg-ink hover:text-white;
+    border-radius: 2px;
+  }
+
+  .link {
+    @apply underline decoration-red decoration-2 underline-offset-4 transition-colors hover:text-red;
+  }
+
+  .label {
+    @apply text-[13px] font-semibold uppercase tracking-[0.08em] text-muted;
+  }
+
+  .prose-list li {
+    @apply relative pl-5;
+  }
+
+  .prose-list li::before {
+    content: '';
+    @apply absolute left-0 top-[0.7em] h-[2px] w-2.5 bg-red;
+  }
 }

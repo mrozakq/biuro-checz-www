@@ -1,63 +1,119 @@
-import Link from 'next/link'
-import Image from 'next/image'
+'use client'
 
-const nav = [
-  { href: '/', label: 'Strona główna' },
-  { href: '/o-nas/', label: 'O nas' },
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import logo from '@/assets/checz-logo.png'
+import { SITE } from '@/lib/site'
+import OfficeStatus from './OfficeStatus'
+import { ExternalIcon } from './icons'
+
+const NAV = [
   { href: '/oferta/', label: 'Oferta' },
+  { href: '/utrzymanie-czystosci/', label: 'Utrzymanie czystości' },
   { href: '/kontakt/', label: 'Kontakt' },
 ]
 
+const norm = (p: string) => p.replace(/\/$/, '') || '/'
+
 export default function Header() {
+  const pathname = norm(usePathname() || '/')
+  const [open, setOpen] = useState(false)
+
   return (
-    <header className="sticky top-0 z-30 bg-white/85 backdrop-blur-md border-b border-brand-line">
-      <div className="container-wide flex items-center justify-between py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="bg-white rounded-xl shadow-card p-1.5">
-            <Image
-              src="/checz-logo.png"
-              alt="Biuro Checz'"
-              width={40}
-              height={40}
-              className="rounded-md"
-            />
-          </div>
-          <div className="leading-tight">
-            <div className="font-bold text-lg">Biuro Checz'</div>
-            <div className="text-[11px] text-brand-slate">od 1991 · Wejherowo</div>
-          </div>
-        </Link>
-
-        <nav className="hidden lg:flex items-center gap-2 bg-brand-bg rounded-full p-1.5 border border-brand-line">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-brand-ink px-4 py-2 rounded-full hover:bg-white hover:shadow-card transition-all"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <Link href="/kontakt/" className="hidden md:inline-flex btn-primary !py-2.5 !px-5 text-sm">
-          Zapytaj o ofertę
-        </Link>
+    <header className="relative z-30">
+      <div className="bg-red text-[14px] text-white">
+        <div className="wrap flex items-center justify-between gap-4 py-2">
+          <OfficeStatus />
+          <span className="hidden gap-6 sm:flex">
+            <a href={SITE.phoneHref} className="font-semibold hover:underline">
+              {SITE.phoneFull}
+            </a>
+            <a href={`mailto:${SITE.email}`} className="hidden hover:underline md:inline">
+              {SITE.email}
+            </a>
+          </span>
+        </div>
       </div>
 
-      <nav className="lg:hidden border-t border-brand-line bg-white">
-        <div className="container-wide flex flex-wrap gap-x-5 gap-y-2 py-3 text-sm">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-brand-slate hover:text-brand-red font-medium"
+      <div className="border-b-2 border-rule bg-paper">
+        <div className="wrap flex items-stretch justify-between gap-4">
+          <Link href="/" className="flex shrink-0 items-center py-2.5" onClick={() => setOpen(false)}>
+            <Image src={logo} alt="Biuro Checz’, od 1991" className="h-[64px] w-auto md:h-[80px]" priority />
+          </Link>
+
+          <nav className="hidden items-stretch lg:flex" aria-label="Menu główne">
+            {NAV.map((item) => {
+              const active = pathname === norm(item.href)
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={`cond-mid flex items-center px-5 text-[17px] uppercase tracking-[0.04em] transition-colors ${
+                    active ? 'text-red' : 'hover:text-red'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
+            <a
+              href={SITE.tomojdom}
+              target="_blank"
+              rel="noopener"
+              className="group ml-4 flex items-center gap-4 bg-ink px-6 text-white transition-colors hover:bg-red"
             >
-              {item.label}
-            </Link>
-          ))}
+              <span className="leading-none">
+                <span className="tag block text-[11px] text-white/70 group-hover:text-white">e-Kartoteka</span>
+                <span className="cond mt-1 block text-[26px] lowercase">tomojdom.pl</span>
+              </span>
+              <ExternalIcon className="h-5 w-5" />
+            </a>
+          </nav>
+
+          <div className="flex items-center gap-2 lg:hidden">
+            <a
+              href={SITE.tomojdom}
+              target="_blank"
+              rel="noopener"
+              className="cond-mid inline-flex items-center gap-1.5 bg-ink px-3 py-2.5 text-[16px] text-white"
+            >
+              tomojdom.pl <ExternalIcon className="h-3.5 w-3.5" />
+            </a>
+            <button
+              type="button"
+              onClick={() => setOpen((o) => !o)}
+              aria-expanded={open}
+              aria-controls="menu-mobile"
+              className="cond-mid border-2 border-ink px-3 py-2 text-[16px] uppercase"
+            >
+              {open ? 'Zamknij' : 'Menu'}
+            </button>
+          </div>
         </div>
-      </nav>
+
+        {open && (
+          <nav id="menu-mobile" className="border-t-2 border-rule lg:hidden" aria-label="Menu główne">
+            <ul className="wrap">
+              {[{ href: '/', label: 'Strona główna' }, ...NAV].map((item) => (
+                <li key={item.href} className="border-b border-ink/15 last:border-0">
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className={`cond-mid block py-3.5 text-[22px] uppercase ${
+                      pathname === norm(item.href) ? 'text-red' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+      </div>
     </header>
   )
 }

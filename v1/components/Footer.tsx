@@ -1,58 +1,70 @@
 import Link from 'next/link'
+import { SITE } from '@/lib/site'
+import Hours from './Hours'
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-ink text-white/80 mt-20">
-      <div className="container-wide grid md:grid-cols-3 gap-10 py-14">
-        <div>
-          <div className="font-serif text-2xl text-white mb-3">Biuro Checz'</div>
-          <span className="divider-red mb-4" />
-          <p className="text-sm leading-relaxed">
-            Zarządzanie nieruchomościami w Wejherowie i okolicach od 1991 roku.
-            Wspólnoty mieszkaniowe, deweloperzy, właściciele prywatni.
+    <footer className="mt-24 bg-ink text-white/80">
+      <div className="wrap grid gap-10 py-14 text-[15px] md:grid-cols-12">
+        <div className="md:col-span-4">
+          <p className="font-serif text-[26px] text-white">Biuro Checz’</p>
+          <p className="mt-2 max-w-xs leading-relaxed">
+            Zarządzanie i administrowanie nieruchomościami w Wejherowie i okolicach od 1991 roku.
           </p>
         </div>
-        <div>
-          <div className="text-white text-sm uppercase tracking-wider mb-3">
-            Kontakt
-          </div>
-          <ul className="space-y-2 text-sm">
-            <li>ul. Jana III Sobieskiego 223/4, Wejherowo</li>
-            <li>
-              <a href="tel:+48733398887" className="hover:text-brand-red">
-                +48 733 398 887
-              </a>
-            </li>
-            <li>
-              <a
-                href="mailto:biuro@biurochecz.pl"
-                className="hover:text-brand-red"
-              >
-                biuro@biurochecz.pl
-              </a>
-            </li>
-          </ul>
+
+        <div className="md:col-span-3">
+          <p className="mb-3 font-semibold text-white">Kontakt</p>
+          <p>
+            {SITE.street}
+            <br />
+            {SITE.postal} {SITE.city}
+          </p>
+          <p className="mt-3">
+            <a href={SITE.phoneHref} className="hover:text-white">
+              tel. {SITE.phoneDisplay}
+            </a>
+            <br />
+            <a href={`mailto:${SITE.email}`} className="hover:text-white">
+              {SITE.email}
+            </a>
+          </p>
         </div>
-        <div>
-          <div className="text-white text-sm uppercase tracking-wider mb-3">
-            Godziny otwarcia
-          </div>
-          <ul className="space-y-1 text-sm">
-            <li>Poniedziałek: 7:00 – 17:00</li>
-            <li>Środa: 7:00 – 15:00</li>
-            <li>Piątek: 7:00 – 13:00</li>
-            <li className="text-white/50">Wtorek, Czwartek — biuro nieczynne</li>
+
+        <div className="md:col-span-3">
+          <p className="mb-1 font-semibold text-white">Godziny pracy biura</p>
+          <Hours dark />
+        </div>
+
+        <div className="md:col-span-2">
+          <p className="mb-3 font-semibold text-white">Na skróty</p>
+          <ul className="space-y-1.5">
+            <li>
+              <Link href="/oferta/" className="hover:text-white">
+                Oferta
+              </Link>
+            </li>
+            <li>
+              <Link href="/utrzymanie-czystosci/" className="hover:text-white">
+                Utrzymanie czystości
+              </Link>
+            </li>
+            <li>
+              <Link href="/kontakt/" className="hover:text-white">
+                Kontakt
+              </Link>
+            </li>
+            <li>
+              <a href={SITE.tomojdom} target="_blank" rel="noopener" className="text-white hover:underline">
+                tomojdom.pl
+              </a>
+            </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="container-wide flex flex-col md:flex-row items-center justify-between py-5 text-xs text-white/50">
-          <span>© {new Date().getFullYear()} Biuro Checz'. Wszelkie prawa zastrzeżone.</span>
-          <div className="flex gap-5 mt-2 md:mt-0">
-            <Link href="/o-nas/" className="hover:text-white">O nas</Link>
-            <Link href="/oferta/" className="hover:text-white">Oferta</Link>
-            <Link href="/kontakt/" className="hover:text-white">Kontakt</Link>
-          </div>
+        <div className="wrap py-5 text-[13px] text-white/50">
+          © {new Date().getFullYear()} Biuro Checz’, Wejherowo
         </div>
       </div>
     </footer>

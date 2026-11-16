@@ -5,16 +5,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          red: '#CC0000',
-          'red-dark': '#990000',
-          black: '#1a1a1a',
-          ink: '#0d0d0d',
-        },
+        ink: '#1a1a1a',
+        red: '#CC0000',
+        'red-dark': '#A30000',
+        paper: '#F5F4F1',
+        line: '#DEDBD6',
+        muted: '#5B5853',
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'Arial', 'sans-serif'],
+      },
+      maxWidth: {
+        wrap: '1180px',
       },
     },
   },

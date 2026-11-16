@@ -1,180 +1,162 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import biuro from '@/assets/sobieskiego-biuro.jpg'
+import Hours from '@/components/Hours'
+import MapEmbed from '@/components/MapEmbed'
+import { ExternalIcon } from '@/components/icons'
+import { AUDIT, GROUPS, SERVICES, TOMOJDOM_TEXT } from '@/lib/content'
+import { MAP_ROUTE, SITE } from '@/lib/site'
+import { t } from '@/lib/typo'
 
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-brand-ink text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_30%_20%,#CC0000,transparent_60%)]" />
-        <div className="container-wide relative py-24 md:py-36">
-          <span className="divider-red mb-6 block" />
-          <p className="uppercase tracking-[0.25em] text-xs text-brand-red mb-5">
-            od 1991 roku — Wejherowo
-          </p>
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.05] max-w-4xl">
-            Profesjonalne zarządzanie nieruchomościami od 1991 roku
+      {/* Wstęp */}
+      <section className="wrap grid items-center gap-10 py-12 md:py-16 lg:grid-cols-12 lg:gap-14">
+        <div className="lg:col-span-6">
+          <h1 className="text-[34px] leading-[1.12] sm:text-[44px] md:text-[54px]">
+            Zarządzanie nieruchomościami w&nbsp;Wejherowie od&nbsp;1991&nbsp;roku
           </h1>
-          <p className="mt-7 max-w-2xl text-white/75 text-lg leading-relaxed">
-            Obsługujemy wspólnoty mieszkaniowe, deweloperów i właścicieli prywatnych
-            w Wejherowie i okolicach. Stabilność, doświadczenie, lokalna wiedza.
+          <p className="mt-6 max-w-xl text-[19px] leading-relaxed text-muted">
+            {t(
+              'Prowadzimy sprawy wspólnot mieszkaniowych, osiedli oraz nieruchomości prywatnych i komercyjnych. Zajmujemy się administracją, księgowością oraz obsługą techniczną i prawną budynków w Wejherowie i okolicach.',
+            )}
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/kontakt/" className="btn-primary">
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <Link href="/kontakt/" className="btn">
               Zapytaj o ofertę
             </Link>
-            <Link href="/oferta/" className="btn-ghost">
-              Zobacz pełną ofertę
-            </Link>
+            <span className="text-[17px] text-muted">
+              lub zadzwoń:{' '}
+              <a href={SITE.phoneHref} className="font-semibold text-ink hover:text-red">
+                {SITE.phoneDisplay}
+              </a>
+            </span>
           </div>
         </div>
+
+        <figure className="lg:col-span-6">
+          <Image
+            src={biuro}
+            alt="Kamienice przy ul. Sobieskiego w Wejherowie, w jednej z nich mieści się biuro Checz’"
+            className="h-auto w-full"
+            sizes="(min-width: 1024px) 560px, 100vw"
+            priority
+          />
+          <figcaption className="mt-2 text-[14px] italic text-muted">Wejherowo, ul. Sobieskiego</figcaption>
+        </figure>
       </section>
 
-      {/* LICZBY */}
-      <section className="bg-white border-b border-neutral-200">
-        <div className="container-wide grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 py-16">
-          {[
-            { value: '30+', label: 'Lat doświadczenia' },
-            { value: '500+', label: 'Zarządzanych lokali' },
-            { value: '7', label: 'Obszarów obsługi' },
-            { value: '24/7', label: 'Pogotowie lokatorskie' },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center md:text-left">
-              <div className="font-serif text-5xl md:text-6xl text-brand-red leading-none">
-                {stat.value}
-              </div>
-              <div className="mt-3 text-sm uppercase tracking-wider text-neutral-600">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* USŁUGI W SKRÓCIE */}
-      <section className="section bg-neutral-50">
-        <div className="container-wide">
-          <div className="max-w-3xl">
-            <span className="divider-red mb-5 block" />
-            <h2 className="text-4xl md:text-5xl mb-5">Nasze usługi</h2>
-            <p className="text-neutral-700 text-lg leading-relaxed">
-              Pełne wsparcie administracyjne, księgowe i techniczne dla każdego
-              typu nieruchomości — od jednorodzinnych po wielomieszkaniowe.
-            </p>
-          </div>
-
-          <div className="mt-14 grid md:grid-cols-3 gap-px bg-neutral-200 border border-neutral-200">
-            {[
-              {
-                title: 'Wspólnoty mieszkaniowe',
-                body: 'Kompleksowa obsługa administracyjna i księgowa. Prowadzenie zebrań, uchwały, sprawozdania.',
-              },
-              {
-                title: 'Deweloperzy i osiedla',
-                body: 'Zarządzanie nowymi inwestycjami — od odbioru technicznego po pełną obsługę bieżącą.',
-              },
-              {
-                title: 'Właściciele prywatni',
-                body: 'Obsługa pojedynczych lokali i kamienic. Najem, rozliczenia, sprawy formalne.',
-              },
-              {
-                title: 'Sprawy techniczne',
-                body: 'Przeglądy, remonty, koordynacja prac — z lokalnymi sprawdzonymi wykonawcami.',
-              },
-              {
-                title: 'Strefa Mieszkańca',
-                body: 'Internetowy dostęp do salda, uchwał, opłat i dokumentów wspólnoty 24/7.',
-              },
-              {
-                title: 'Pogotowie lokatorskie',
-                body: 'Reakcja na awarie przez całą dobę — bezpieczeństwo mieszkańców na pierwszym miejscu.',
-              },
-            ].map((item) => (
-              <div key={item.title} className="bg-white p-8 hover:bg-neutral-50 transition-colors">
-                <h3 className="text-xl mb-3">{item.title}</h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">{item.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10">
-            <Link
-              href="/oferta/"
-              className="text-brand-red font-medium uppercase tracking-wider text-sm border-b border-brand-red pb-1 hover:text-brand-red-dark"
-            >
-              Pełna oferta →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* DLACZEGO MY */}
-      <section className="section bg-white">
-        <div className="container-wide grid md:grid-cols-2 gap-16 items-start">
-          <div>
-            <span className="divider-red mb-5 block" />
-            <h2 className="text-4xl md:text-5xl mb-6">Dlaczego Biuro Checz'?</h2>
-            <p className="text-neutral-700 text-lg leading-relaxed">
-              Trzy dekady doświadczenia w jednym regionie to coś więcej niż liczba.
-              To znajomość lokalnych realiów, sprawdzeni wykonawcy i relacje, których
-              nie zbuduje się w rok.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {[
-              {
-                n: '01',
-                t: 'Firma rodzinna z tradycją',
-                d: 'Działamy nieprzerwanie od 1991 roku. Decyzje podejmujemy szybko i odpowiedzialnie.',
-              },
-              {
-                n: '02',
-                t: 'Lokalna ekspertyza',
-                d: 'Znamy Wejherowo i okolice — urzędy, wykonawców, specyfikę osiedli.',
-              },
-              {
-                n: '03',
-                t: 'Doświadczony zespół',
-                d: 'Zarządcy, księgowi i administratorzy — wszystko pod jednym dachem.',
-              },
-              {
-                n: '04',
-                t: 'Transparentność',
-                d: 'Strefa Mieszkańca daje pełen wgląd w finanse i decyzje wspólnoty online.',
-              },
-            ].map((item) => (
-              <div key={item.n} className="flex gap-5 border-b border-neutral-200 pb-6">
-                <div className="font-serif text-3xl text-brand-red shrink-0 w-12">
-                  {item.n}
-                </div>
-                <div>
-                  <h3 className="text-lg mb-1">{item.t}</h3>
-                  <p className="text-neutral-600 text-sm leading-relaxed">{item.d}</p>
-                </div>
+      {/* Dla kogo */}
+      <section className="border-y border-line bg-paper">
+        <div className="wrap py-14 md:py-16">
+          <h2 className="text-[32px] md:text-[38px]">Dla kogo pracujemy</h2>
+          <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">
+            {GROUPS.map((g, i) => (
+              <div key={g.title} className={`md:px-8 ${i === 0 ? 'md:pl-0' : 'md:border-l md:border-line'}`}>
+                <h3 className="text-[23px]">{g.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted">{t(g.text)}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-brand-ink text-white">
-        <div className="container-wide py-20 text-center">
-          <span className="divider-red mb-6 inline-block" />
-          <h2 className="text-3xl md:text-5xl mb-5">
-            Powierz nam swoją nieruchomość
-          </h2>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto mb-9">
-            Zostaw zapytanie — odpowiemy w ciągu jednego dnia roboczego i przygotujemy
-            indywidualną ofertę.
+      {/* Zakres usług */}
+      <section className="wrap grid gap-10 py-16 md:py-20 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <h2 className="text-[32px] md:text-[38px]">Zakres usług</h2>
+          <p className="mt-4 leading-relaxed text-muted">
+            {t(
+              'Szczegółowy zakres obsługi zawsze zależy od potrzeb danej nieruchomości. Poniżej to, czym zajmujemy się na co dzień.',
+            )}
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/kontakt/" className="btn-primary">
-              Wyślij zapytanie
+          <p className="mt-6">
+            <Link href="/oferta/" className="link font-semibold">
+              Pełna oferta
             </Link>
-            <a href="tel:+48733398887" className="btn-ghost">
-              Zadzwoń: +48 733 398 887
+          </p>
+        </div>
+
+        <div className="lg:col-span-8">
+          <dl className="divide-y divide-line border-y border-line">
+            {SERVICES.map((s) => (
+              <div key={s.id} className="grid gap-2 py-6 sm:grid-cols-3 sm:gap-8">
+                <dt className="font-serif text-[21px] leading-snug">
+                  <Link href={`/oferta/#${s.id}`} className="hover:text-red">
+                    {s.title}
+                  </Link>
+                </dt>
+                <dd className="leading-relaxed text-muted sm:col-span-2">{t(s.short)}</dd>
+              </div>
+            ))}
+            <div className="grid gap-2 py-6 sm:grid-cols-3 sm:gap-8">
+              <dt className="font-serif text-[21px] leading-snug">
+                <Link href="/utrzymanie-czystosci/" className="hover:text-red">
+                  Utrzymanie czystości
+                </Link>
+              </dt>
+              <dd className="leading-relaxed text-muted sm:col-span-2">
+                {t('Sprzątanie klatek schodowych i części wspólnych budynków według ustalonego harmonogramu.')}
+              </dd>
+            </div>
+          </dl>
+
+          <blockquote className="mt-10 border-l-4 border-red pl-6">
+            <p className="font-serif text-[23px] italic leading-snug md:text-[26px]">{t(AUDIT)}</p>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* tomojdom.pl */}
+      <section className="wrap">
+        <div className="grid items-center gap-8 border border-ink p-8 md:grid-cols-12 md:p-10">
+          <div className="md:col-span-8">
+            <p className="label">Dla właścicieli lokali</p>
+            <h2 className="mt-2 text-[30px] md:text-[34px]">Strefa mieszkańca w serwisie tomojdom.pl</h2>
+            <p className="mt-4 leading-relaxed text-muted">{t(TOMOJDOM_TEXT)}</p>
+            <p className="mt-3 text-[15px] text-muted">
+              {t('Jeśli nie mają Państwo jeszcze dostępu, prosimy o kontakt z biurem.')}
+            </p>
+          </div>
+          <div className="md:col-span-4 md:text-right">
+            <a href={SITE.tomojdom} target="_blank" rel="noopener" className="btn">
+              Zaloguj się w tomojdom.pl <ExternalIcon />
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* Biuro i mapa */}
+      <section className="wrap grid gap-10 pt-16 md:pt-20 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <h2 className="text-[32px] md:text-[38px]">Zapraszamy do biura</h2>
+          <p className="mt-4 text-[19px] leading-relaxed">
+            {SITE.street}
+            <br />
+            {SITE.postal} {SITE.city}
+          </p>
+          <p className="mt-4">
+            <a href={SITE.phoneHref} className="font-semibold hover:text-red">
+              tel. {SITE.phoneDisplay}
+            </a>
+            <br />
+            <a href={`mailto:${SITE.email}`} className="link">
+              {SITE.email}
+            </a>
+          </p>
+          <div className="mt-8">
+            <p className="label mb-1">Godziny pracy biura</p>
+            <Hours />
+          </div>
+          <p className="mt-6">
+            <a href={MAP_ROUTE} target="_blank" rel="noopener" className="btn-outline">
+              Wyznacz trasę <ExternalIcon />
+            </a>
+          </p>
+        </div>
+        <div className="lg:col-span-7">
+          <MapEmbed className="aspect-[4/3] min-h-[320px] border border-line" />
         </div>
       </section>
     </>
