@@ -45,8 +45,8 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/utrzymanie-czystosci/" className="hover:text-white">
-                Utrzymanie czystości
+              <Link href="/dla-mieszkancow/" className="hover:text-white">
+                Dla mieszkańców
               </Link>
             </li>
             <li>
@@ -64,7 +64,13 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/15">
         <div className="wrap flex flex-col gap-2 py-5 text-[13px] text-white/50 sm:flex-row sm:justify-between">
-          <span>© {new Date().getFullYear()} Biuro Checz’, Wejherowo</span>
+          <span>
+            © {new Date().getFullYear()} Biuro Checz’, Wejherowo
+            <span className="mx-2">·</span>
+            <Link href="/polityka-prywatnosci/" className="text-white/80 hover:text-white hover:underline">
+              Ochrona danych osobowych (RODO)
+            </Link>
+          </span>
           <span>
             Realizacja i nadzór nad stroną:{' '}
             <a href="https://emteq.pl" target="_blank" rel="noopener" className="font-semibold text-white/80 hover:text-white hover:underline">

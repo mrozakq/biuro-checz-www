@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHead from '@/components/PageHead'
 import { ExternalIcon } from '@/components/icons'
-import { AUDIT, GROUPS, SERVICES, TOMOJDOM_TEXT } from '@/lib/content'
+import { CLEANING_NOTE, GROUPS, SERVICES, TOMOJDOM_TEXT } from '@/lib/content'
 import { SITE } from '@/lib/site'
 import { t } from '@/lib/typo'
 
 export const metadata: Metadata = {
   title: 'Oferta: zarządzanie i administrowanie nieruchomościami',
   description:
-    'Administracja, księgowość, obsługa techniczna i prawna wspólnot mieszkaniowych w Wejherowie. Audyt kosztów, windykacja, utrzymanie czystości, strefa mieszkańca.',
+    'Administracja, księgowość, obsługa techniczna i prawna wspólnot mieszkaniowych w Wejherowie. Windykacja należności i strefa mieszkańca w serwisie tomojdom.pl.',
 }
 
 export default function Oferta() {
@@ -52,23 +52,9 @@ export default function Oferta() {
           </section>
         ))}
 
-        <section id="audyt" className="grid scroll-mt-6 gap-5 border-t-2 border-rule py-10 md:grid-cols-12 md:gap-10 md:py-12">
-          <h2 className="cond text-[34px] uppercase text-red md:col-span-4 md:text-[42px]">Audyt kosztów</h2>
-          <p className="text-[21px] leading-relaxed md:col-span-8">{t(AUDIT)}</p>
-        </section>
-
         <section id="czystosc" className="grid scroll-mt-6 gap-5 border-t-2 border-rule py-10 md:grid-cols-12 md:gap-10 md:py-12">
           <h2 className="cond text-[34px] uppercase md:col-span-4 md:text-[42px]">Utrzymanie czystości</h2>
-          <div className="md:col-span-8">
-            <p className="text-[19px] leading-relaxed">
-              {t(
-                'Organizujemy regularne sprzątanie klatek schodowych, wejść, piwnic i pomieszczeń technicznych w budynkach mieszkalnych.',
-              )}
-            </p>
-            <Link href="/utrzymanie-czystosci/" className="link mt-4 inline-block font-semibold">
-              Zakres sprzątania
-            </Link>
-          </div>
+          <p className="text-[19px] leading-relaxed md:col-span-8">{t(CLEANING_NOTE)}</p>
         </section>
 
         <section id="tomojdom" className="grid scroll-mt-6 gap-5 border-t-2 border-rule py-10 md:grid-cols-12 md:gap-10 md:py-12">

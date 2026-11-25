@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react'
 
-// Godziny otwarcia: dzień tygodnia (0 = niedziela) -> [od, do]
+// Godziny obsługi klienta: dzień tygodnia (0 = niedziela) -> [od, do]
 const OPEN: Record<number, [number, number]> = { 1: [7, 17], 3: [7, 15], 5: [7, 13] }
+// Wtorek i czwartek: dzień pracy wewnętrznej, tylko zgłoszenia awarii
+const INTERNAL = new Set([2, 4])
 const DAY_ACC = ['niedzielę', 'poniedziałek', 'wtorek', 'środę', 'czwartek', 'piątek', 'sobotę']
 const WD: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }
 
@@ -28,11 +30,14 @@ export function getStatus(): { open: boolean; text: string } {
   if (today && minutes < today[0] * 60) {
     return { open: false, text: `Dziś biuro czynne od ${today[0]}:00 do ${today[1]}:00` }
   }
+  if (INTERNAL.has(day)) {
+    return { open: false, text: 'Dziś dzień pracy wewnętrznej: bez obsługi klienta, tylko zgłoszenia awarii' }
+  }
   for (let i = 1; i <= 7; i++) {
     const d = (day + i) % 7
     if (OPEN[d]) {
       const when = i === 1 ? 'jutro' : `w ${DAY_ACC[d]}`
-      return { open: false, text: `Biuro jest teraz zamknięte, zapraszamy ${when} od ${OPEN[d][0]}:00` }
+      return { open: false, text: `Obsługa klienta ${when} od ${OPEN[d][0]}:00` }
     }
   }
   return { open: false, text: '' }
@@ -48,7 +53,7 @@ export default function OfficeStatus({ className = '' }: { className?: string })
   }, [])
 
   if (!status) {
-    return <span className={className}>Biuro czynne: pon. 7–17, śr. 7–15, pt. 7–13</span>
+    return <span className={className}>Obsługa klienta: pon. 7–17, śr. 7–15, pt. 7–13</span>
   }
 
   return (

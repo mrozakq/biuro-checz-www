@@ -11,7 +11,7 @@ import { ExternalIcon } from './icons'
 
 const NAV = [
   { href: '/oferta/', label: 'Oferta' },
-  { href: '/utrzymanie-czystosci/', label: 'Utrzymanie czystości' },
+  { href: '/dla-mieszkancow/', label: 'Dla mieszkańców' },
   { href: '/kontakt/', label: 'Kontakt' },
 ]
 

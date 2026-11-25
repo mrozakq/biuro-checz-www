@@ -10,7 +10,7 @@ import { EMAILS, MAP_ROUTE, SITE } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Kontakt',
   description:
-    'Biuro Checz’, ul. Jana III Sobieskiego 223/4, 84-200 Wejherowo. Tel. 733 398 887, biuro@biurochecz.pl. Biuro czynne w poniedziałki, środy i piątki.',
+    'Biuro Checz’, ul. Jana III Sobieskiego 223/5, 84-200 Wejherowo. Tel. 733 398 887, biuro@biurochecz.pl. Obsługa klienta w poniedziałki, środy i piątki.',
 }
 
 export default function Kontakt() {

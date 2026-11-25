@@ -5,7 +5,7 @@ import deptak from '@/assets/sobieskiego-deptak.jpg'
 import Hours from '@/components/Hours'
 import MapEmbed from '@/components/MapEmbed'
 import { ExternalIcon } from '@/components/icons'
-import { AUDIT, GROUPS, SERVICES, TOMOJDOM_TEXT } from '@/lib/content'
+import { CLEANING_NOTE, GROUPS, SERVICES, TOMOJDOM_TEXT } from '@/lib/content'
 import { MAP_ROUTE, SITE } from '@/lib/site'
 import { t } from '@/lib/typo'
 
@@ -79,20 +79,9 @@ export default function Home() {
               </div>
             ))}
             <div className="border-t-[3px] border-rule pt-5">
-              <h3 className="cond-mid text-[24px] uppercase">
-                <Link href="/utrzymanie-czystosci/" className="hover:text-red">
-                  Utrzymanie czystości
-                </Link>
-              </h3>
-              <p className="mt-3 leading-relaxed text-muted">
-                {t('Sprzątanie klatek schodowych i części wspólnych budynków według ustalonego harmonogramu.')}
-              </p>
+              <h3 className="cond-mid text-[24px] uppercase">Utrzymanie czystości</h3>
+              <p className="mt-3 leading-relaxed text-muted">{t(CLEANING_NOTE)}</p>
             </div>
-          </div>
-
-          <div className="mt-16 grid gap-6 bg-ink p-8 text-white md:grid-cols-12 md:p-12">
-            <p className="cond text-[34px] uppercase text-red md:col-span-4 md:text-[44px]">Na start: audyt kosztów</p>
-            <p className="text-[19px] leading-relaxed text-white/85 md:col-span-8 md:text-[21px]">{t(AUDIT)}</p>
           </div>
         </div>
       </section>
@@ -109,9 +98,14 @@ export default function Home() {
             <p className="mt-3 text-[15px] text-white/75">
               {t('Jeśli nie mają Państwo jeszcze dostępu, prosimy o kontakt z biurem.')}
             </p>
-            <a href={SITE.tomojdom} target="_blank" rel="noopener" className="btn-light mt-7">
-              Zaloguj się <ExternalIcon />
-            </a>
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a href={SITE.tomojdom} target="_blank" rel="noopener" className="btn-light">
+                Zaloguj się <ExternalIcon />
+              </a>
+              <Link href="/dla-mieszkancow/#druki" className="font-semibold underline decoration-2 underline-offset-4 hover:text-ink">
+                Druki do pobrania
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -162,3 +162,34 @@ Styl: strona nie może wyglądać na zrobioną przez AI.
 
 Profile: https://www.facebook.com/profile.php?id=100080105594508, https://www.instagram.com/biurochecz/
 
+
+
+\## Status (16.11.2026)
+
+Czekamy na wybór wariantu przez klienta. Do tego czasu nic nie wdrażamy.
+
+Po wyborze: przenosiny z Amplify na S3 + CloudFront oraz nowy formularz (AWS Lambda + Amazon SES zamiast FormSubmit, który nie działa). Polityka uprawnień do tego: .aws-setup/contact-form-deployer-policy.json. Do decyzji: adres nadawcy powiadomień (formularz@emteq.pl albo formularz@biurochecz.pl, ten drugi wymaga rekordów DKIM w Cloudflare).
+
+
+
+\## Rewizja 3 (25.11.2026): klient wybrał v2 (wyrazisty)
+
+Uwagi klientki (SMS, zrzuty w Downloads/drive-download-20261125T101253Z-1-001.zip):
+
+\- Wt i Czw nie „nieczynne”: biuro pracuje, dzień pracy wewnętrznej, bez obsługi klienta, tylko zgłoszenia awarii.
+
+\- Adres: ul. Jana III Sobieskiego 223/5 (było 223/4).
+
+\- Usunąć blok „Na start: audyt kosztów”.
+
+\- W obsłudze prawnej usunąć „przygotowujemy statuty, regulaminy, umowy”.
+
+\- Utrzymanie czystości: biuro tego nie świadczy. Zamiast podstrony krótka wzmianka o współpracy z firmami; klientka przyśle własne sformułowanie (na razie tekst tymczasowy w lib/content.ts, CLEANING_NOTE).
+
+\- Dodać informację o RODO (podstrona /polityka-prywatnosci/, projekt do weryfikacji przez klienta).
+
+\- Dodać druk „Oświadczenie o liczbie osób zamieszkałych w lokalu i o zaliczkach” (podstrona /dla-mieszkancow/, PDF i DOC). Uwaga: nagłówek druku ma stare dane (ul. Sobieskiego 280/3, tel. 058 672 22 29, biurochecz@wp.pl).
+
+Wariant 1 usunięty z repo. Główny adres prototypu i /v1/ przekierowują na /v2/. Klientka ogląda zmiany na Amplify; S3 + CloudFront i formularz (Lambda + SES) dopiero po jej akceptacji.
+
+

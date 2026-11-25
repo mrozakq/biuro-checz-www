@@ -1,0 +1,42 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Ses",
+      "Effect": "Allow",
+      "Action": ["ses:GetAccount", "ses:PutAccountDetails", "ses:*EmailIdentit*", "ses:SendEmail"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "Stack",
+      "Effect": "Allow",
+      "Action": "cloudformation:*",
+      "Resource": "arn:aws:cloudformation:*:807764702344:stack/*-contact-form/*"
+    },
+    {
+      "Sid": "Lambda",
+      "Effect": "Allow",
+      "Action": "lambda:*",
+      "Resource": "arn:aws:lambda:*:807764702344:function:*-contact-form"
+    },
+    {
+      "Sid": "Role",
+      "Effect": "Allow",
+      "Action": ["iam:CreateRole", "iam:DeleteRole", "iam:GetRole", "iam:TagRole", "iam:*RolePolicy"],
+      "Resource": "arn:aws:iam::807764702344:role/*-contact-form-*"
+    },
+    {
+      "Sid": "PassRole",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::807764702344:role/*-contact-form-*",
+      "Condition": { "StringEquals": { "iam:PassedToService": "lambda.amazonaws.com" } }
+    },
+    {
+      "Sid": "Misc",
+      "Effect": "Allow",
+      "Action": ["cloudformation:ValidateTemplate", "logs:*"],
+      "Resource": "*"
+    }
+  ]
+}

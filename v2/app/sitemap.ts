@@ -8,7 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${base}/`, lastModified: now, changeFrequency: 'monthly', priority: 1 },
     { url: `${base}/oferta/`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${base}/utrzymanie-czystosci/`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/dla-mieszkancow/`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/polityka-prywatnosci/`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${base}/kontakt/`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ]
 }

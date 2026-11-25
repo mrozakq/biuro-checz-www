@@ -37,6 +37,7 @@ const localBusiness = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Biuro Checz’',
+  legalName: SITE.legalName,
   description,
   foundingDate: '1991',
   url: SITE.url,

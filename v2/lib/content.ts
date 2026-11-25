@@ -59,16 +59,9 @@ export const SERVICES = [
   {
     id: 'prawo',
     title: 'Obsługa prawna wspólnoty',
-    short:
-      'Na bieżąco doradzamy w sprawach prawnych: oceniamy sytuację i rekomendujemy dalsze kroki. Przygotowujemy statuty, regulaminy i umowy.',
-    text: 'Gdy pojawia się problem, wstępnie oceniamy go od strony prawnej i proponujemy, jak wspólnota powinna dalej postąpić. Przygotowujemy też dokumenty, których wspólnota potrzebuje na co dzień.',
-    items: [
-      'statuty wspólnot mieszkaniowych',
-      'regulaminy porządku domowego',
-      'regulaminy rozliczania mediów',
-      'umowy potrzebne do prawidłowego funkcjonowania wspólnoty',
-      'inne dokumenty regulujące sprawy wewnętrzne wspólnoty',
-    ],
+    short: 'Na bieżąco doradzamy w sprawach prawnych: oceniamy sytuację i rekomendujemy dalsze kroki.',
+    text: 'Gdy pojawia się problem, wstępnie oceniamy go od strony prawnej i proponujemy, jak wspólnota powinna dalej postąpić.',
+    items: [],
   },
   {
     id: 'windykacja',
@@ -79,31 +72,9 @@ export const SERVICES = [
   },
 ]
 
-export const AUDIT =
-  'Na początku współpracy sprawdzamy koszty utrzymania nieruchomości i wskazujemy, gdzie można je obniżyć. Mniejsze koszty zarządu to niższe opłaty dla właścicieli lokali.'
-
 export const TOMOJDOM_TEXT =
   'Właściciele lokali w budynkach, którymi zarządzamy, mają dostęp do internetowej kartoteki w serwisie tomojdom.pl. Po zalogowaniu można sprawdzić aktualną wysokość i składniki opłat (eksploatacja, media, fundusz remontowy) oraz stan rozliczeń ze wspólnotą, w tym zaksięgowane wpłaty.'
 
-export const CLEANING = [
-  {
-    title: 'Bieżące sprzątanie klatek schodowych',
-    text: 'Zamiatanie i mycie podłóg oraz schodów, ścieranie kurzu z poręczy, parapetów i skrzynek pocztowych, mycie luster i przeszkleń.',
-  },
-  {
-    title: 'Drzwi wejściowe i okna',
-    text: 'Mycie drzwi wejściowych do budynku i okien na klatkach, usuwanie plam i odcisków palców z szyb.',
-  },
-  {
-    title: 'Pojemniki na śmieci',
-    text: 'Regularne opróżnianie koszy w częściach wspólnych, żeby na klatce było czysto i nie pojawiały się nieprzyjemne zapachy.',
-  },
-  {
-    title: 'Piwnice i pomieszczenia techniczne',
-    text: 'Utrzymanie porządku w piwnicach, suszarniach, wózkowniach i innych pomieszczeniach wspólnych.',
-  },
-  {
-    title: 'Zgłaszanie usterek',
-    text: 'Osoby sprzątające na bieżąco sprawdzają stan klatki i zgłaszają usterki, na przykład niedziałające oświetlenie albo uszkodzone wyposażenie.',
-  },
-]
+// Krótka wzmianka zamiast osobnej podstrony: biuro samo nie sprząta, współpracuje z firmami.
+// Klientka obiecała własne sformułowanie, to jest tekst tymczasowy.
+export const CLEANING_NOTE = 'Współpracujemy z firmami, które świadczą usługi utrzymania czystości w budynkach.'

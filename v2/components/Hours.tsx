@@ -1,4 +1,4 @@
-import { HOURS } from '@/lib/site'
+import { HOURS, INTERNAL_DAYS_NOTE } from '@/lib/site'
 
 export default function Hours({ dark = false }: { dark?: boolean }) {
   return (
@@ -11,18 +11,16 @@ export default function Hours({ dark = false }: { dark?: boolean }) {
               dark ? 'border-white/20' : 'border-ink/20'
             }`}
           >
-            <span className={h.open ? '' : dark ? 'text-white/50' : 'text-muted'}>{h.day}</span>
+            <span className={h.open ? '' : dark ? 'text-white/60' : 'text-muted'}>{h.day}</span>
             <span
-              className={`tabular-nums ${h.open ? 'font-semibold' : dark ? 'text-white/50' : 'text-muted'}`}
+              className={`text-right tabular-nums ${h.open ? 'font-semibold' : dark ? 'text-white/60' : 'text-muted'}`}
             >
-              {h.open ? `${h.open}–${h.close}` : 'nieczynne'}
+              {h.open ? `${h.open}–${h.close}` : 'bez obsługi klienta'}
             </span>
           </li>
         ))}
       </ul>
-      <p className={`mt-3 text-[14px] leading-snug ${dark ? 'text-white/60' : 'text-muted'}`}>
-        Wtorki i czwartki to dni pracy wewnętrznej, biuro jest wtedy zamknięte dla klientów.
-      </p>
+      <p className={`mt-3 text-[14px] leading-snug ${dark ? 'text-white/60' : 'text-muted'}`}>{INTERNAL_DAYS_NOTE}</p>
     </div>
   )
 }

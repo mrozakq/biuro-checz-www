@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { useState } from 'react'
 import { SITE } from '@/lib/site'
 
 const TOPICS = [
   'Zarządzanie wspólnotą mieszkaniową',
   'Nieruchomość komercyjna lub prywatna',
-  'Utrzymanie czystości',
   'Sprawa mieszkańca (opłaty, rozliczenia)',
   'Inna sprawa',
 ]
@@ -21,11 +21,6 @@ const lbl = 'mb-1.5 block text-[13px] font-semibold uppercase tracking-[0.1em]'
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>('idle')
   const [topic, setTopic] = useState(TOPICS[0])
-
-  useEffect(() => {
-    const temat = new URLSearchParams(window.location.search).get('temat')
-    if (temat === 'sprzatanie') setTopic(TOPICS[2])
-  }, [])
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -114,7 +109,11 @@ export default function ContactForm() {
         <input type="checkbox" name="consent" required className="mt-0.5 h-4 w-4 shrink-0 accent-[#CC0000]" />
         <span>
           Wyrażam zgodę na przetwarzanie moich danych osobowych przez Biuro Checz’ w celu udzielenia odpowiedzi na
-          zapytanie.
+          zapytanie. Zasady opisujemy w{' '}
+          <Link href="/polityka-prywatnosci/" className="text-ink underline underline-offset-2 hover:text-red">
+            informacji o ochronie danych osobowych
+          </Link>
+          .
         </span>
       </label>
 
